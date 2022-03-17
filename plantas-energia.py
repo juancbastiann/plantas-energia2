@@ -98,5 +98,3 @@ while op != 0:
             recaudacion()
             print('¡REGRESANDO AL MENU PRINCIPAL!')
             break
-
-        dasdas
