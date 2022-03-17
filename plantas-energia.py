@@ -52,6 +52,18 @@ def ciudad_plantas():
             print ('La ciudad que ingreso no cuenta con registros')
             break
 
+def recaudacion ():
+    ciudades_region = informacion[region]
+    total_consumo = 0
+    
+    for ciudad_region in ciudades_region:
+        for planta in consumo_energia.keys():
+            for ciudad in consumo_energia[planta].keys():
+                if ciudad_region == ciudad:
+                    total_consumo += sum(consumo_energia[planta][ciudad]['consumos'])*consumo_energia[planta][ciudad]['tarifa']
+    print(region, ':','$', total_consumo)
+
+
 op = -1
 while op != 0:
 
@@ -76,4 +88,13 @@ while op != 0:
         ciudad_plantas()
         print('¡REGRESANDO AL MENU PRINCIPAL!')
         break
-   # while op == 3:
+    while op == 3:
+        region = input('Region: ')
+        if region not in informacion.keys():
+            print ('¡La region no existe!')
+            print('¡REGRESANDO AL MENU PRINCIPAL!')
+            break
+        if region in informacion.keys():
+            recaudacion()
+            print('¡REGRESANDO AL MENU PRINCIPAL!')
+            break
